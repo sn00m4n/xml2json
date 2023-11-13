@@ -7,13 +7,25 @@
 #[macro_use]
 extern crate serde_json;
 
+use std::fmt::{Display, Formatter};
+
 use log::*;
 use quick_xml::events::Event;
 use quick_xml::Reader;
 use serde_json::{Map, Value};
 
 #[derive(Debug)]
-pub struct Error {}
+pub struct Error {
+    message: String,
+}
+
+impl Display for Error {
+    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", &self.message)
+    }
+}
+
+impl std::error::Error for Error {}
 
 fn read(reader: &mut Reader<&[u8]>, depth: u64) -> Value {
     let mut buf = Vec::new();
