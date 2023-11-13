@@ -3,3 +3,4 @@ Cargo.lock
 *.sw*
 README.xml
 README.md
+.idea/
