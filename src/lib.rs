@@ -15,13 +15,11 @@ use quick_xml::Reader;
 use serde_json::{Map, Value};
 
 #[derive(Debug)]
-pub struct Error {
-    message: String,
-}
+pub struct Error {}
 
 impl Display for Error {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
-        write!(f, "{}", &self.message)
+        write!(f, "An error occurred in xml2json")
     }
 }
 
